@@ -1,8 +1,13 @@
 <div class="container">
   <h2>質問一覧</h2>
-  <tr>
-    <td>
-      <%= render @questions %>
-    </td>
-  </tr>
+  <%= search_form_for @q do |f| %>
+    <%= f.label :title_cont, '検索ワード' %>
+    <%= f.search_field :title_cont %>
+    <%= f.submit "検索", disable_with: 'Submiting...' %>
+  <% end %>
+
+  <div>
+    <li><%= render @question%></li>
+  </div>
+
 </div>
