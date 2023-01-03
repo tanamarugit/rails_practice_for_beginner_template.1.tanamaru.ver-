@@ -1,0 +1,24 @@
+<h1>質問内容、回答画面</h1>
+<h2>質問者<%= "#{@question.user.name}さん" %></h2>
+<p>質問タイトル
+  <div><%= @question.title %></div>
+</p>
+<p>質問内容
+  <div><%= @question.body %></div>
+</p>
+
+<% if current_user == @question.user %>
+  <p><%= link_to  "編集", edit_question_path %></p>
+<% end %>
+
+<%= form_with(model: [@question, @answer], local: true) do |f| %>
+  <%= f.label :body, "回答" %>
+  <%= f.text_area :body %>
+  <%= f.submit "Submit", disable_with: 'Submiting...' %>
+<% end %>
+
+<h3>回答一覧</h3>
+<% @question.answers.each do |answer| %>
+  <li><%= answer.body %></li>
+<% end %>
+
