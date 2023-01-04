@@ -1,8 +1,8 @@
 <div class="container">
   <h2>質問一覧</h2>
   <%= search_form_for @q do |f| %>
-    <%= f.label :title_cont, '検索ワード' %>
-    <%= f.search_field :title_cont %>
+    <%= f.label :title_or_body_or_answers_body_cont, '検索ワード' %>
+    <%= f.search_field :title_or_body_or_answers_body_cont %>
     <%= f.submit "検索", disable_with: 'Submiting...' %>
   <% end %>
 
