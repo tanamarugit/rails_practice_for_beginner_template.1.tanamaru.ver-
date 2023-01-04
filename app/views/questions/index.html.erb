@@ -6,6 +6,10 @@
     <%= f.submit "検索", disable_with: 'Submiting...' %>
   <% end %>
 
+  <%= link_to  "全て", questions_path %>
+  <%= link_to  "解決済み", solved_questions_path %>
+  <%= link_to  "未解決", unsolved_questions_path %>
+
   <div>
     <li><%= render @question%></li>
   </div>

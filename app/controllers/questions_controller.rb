@@ -39,7 +39,19 @@ class QuestionsController < ApplicationController
     @question.update!(solved_check: true)
     redirect_to question_path(@question)
   end
+
+  def solved
+    @q = Question.where(solved_check: true).ransack(params[:q])
+    @question = @q.result(distinct: true)
+    render :index
+  end
   
+  def unsolved
+    @q = Question.where(solved_check: false).ransack(params[:q])
+    @question = @q.result(distinct: true)
+    render :index
+  end
+
   private
 
   def question_params
