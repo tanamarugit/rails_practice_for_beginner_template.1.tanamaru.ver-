@@ -34,6 +34,12 @@ class QuestionsController < ApplicationController
     flash[:notice] = "質問「#{@question.title}」 を更新しました。"
   end
 
+  def solve
+    @question = Question.find(params[:id])
+    @question.update!(solved_check: true)
+    redirect_to question_path(@question)
+  end
+  
   private
 
   def question_params

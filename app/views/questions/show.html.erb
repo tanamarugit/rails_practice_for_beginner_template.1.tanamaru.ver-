@@ -17,6 +17,20 @@
   <%= f.submit "Submit", disable_with: 'Submiting...' %>
 <% end %>
 
+
+<div>
+  <% if @question.solved_check %>
+    <%= '解決済み' %>
+  <% else %>
+    <%= '未解決' %>
+    <% if current_user.id == @question.user_id %>
+      <%= link_to  "解決済みにする", solve_question_path, method: :post %>
+    <% end %>
+  <% end %>
+</div>
+
+
+
 <h3>回答一覧</h3>
 <% @question.answers.each do |answer| %>
   <li><%= answer.body %></li>

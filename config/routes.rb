@@ -4,6 +4,15 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   
   resources :questions do
+    member do
+      post 'solve'
+    end
+
+    collection do
+      get 'solved'
+      get 'unsolved'
+    end
+
     resources :answers, only: [:create, :destory]
   end
   
